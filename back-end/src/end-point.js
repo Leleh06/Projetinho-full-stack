@@ -70,6 +70,8 @@ app.put("/usuarios/:id", async (req, res) => {
     }
 })
 
+//Registro
+
 app.post("/registro", async (req, res) => {
     try {
         const { body } = req;
@@ -89,6 +91,7 @@ app.post("/registro", async (req, res) => {
     }
 });
 
+//Login
 
 app.post("/login", async (req, res) => {
     try {
@@ -124,6 +127,8 @@ app.post("/usuarios", async (req, res) => {
         console.log(error);
     }
 });
+
+//Logs
 
 app.post("/logs", async (req, res) => {
     try {
