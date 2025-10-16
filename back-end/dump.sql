@@ -1,4 +1,5 @@
 CREATE DATABASE senai;
+<<<<<<< HEAD
 
 
 CREATE TABLE usuario(
@@ -7,18 +8,37 @@ CREATE TABLE usuario(
     idade INT,
     email VARCHAR(100) UNIQUE,
     senha VARCHAR(100)
+=======
+USE senai;
+
+CREATE TABLE usuario (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(150) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  cpf VARCHAR(20) NOT NULL,
+  ativo INT NOT NULL,
+  data_cadastro DATETIME NOT NULL,
+  nivel INT NULL
+>>>>>>> 21058c01216a07abb153989e024a5baa11e53768
 );
 
 CREATE TABLE lgs(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	categoria TEXT,
     horas_trabalhadas INT,
+<<<<<<< HEAD
     linhas_codigo INT,
     bugs_corrigidos INT
 );
 
 
 USE devhub;
+=======
+    linha_de_codigo INT,
+    bugs_corrigidos INT
+);
+
+>>>>>>> 21058c01216a07abb153989e024a5baa11e53768
 INSERT INTO lgs (categoria, horas_trabalhadas, linhas_codigo, bugs_corrigidos) VALUES ('Desenvolvimento de Gameplay', 22, 1850, 2);
 INSERT INTO lgs (categoria, horas_trabalhadas, linhas_codigo, bugs_corrigidos) VALUES ('Arte e Design', 30, 45, 0);
 INSERT INTO lgs (categoria, horas_trabalhadas, linhas_codigo, bugs_corrigidos) VALUES ('Correção de Bugs', 8, 90, 7);
