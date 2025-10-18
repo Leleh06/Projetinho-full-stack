@@ -4,7 +4,7 @@
   "main": "end-point.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch end-point.js"
+    "start": "node --watch src/end-point.js"
   },
   "keywords": [],
   "author": "",
