@@ -140,8 +140,8 @@ SELECT
   WHERE senai.likes.id_log  = lgs.id) AS likes,
 
   (SELECT count(*)
-   FROM senai.comment
-   WHERE senai.comment.id_log = lgs.id) AS qnt_comments
+   FROM comment
+   WHERE comment.log_id = lgs.id) AS qnt_comments
    FROM 
   senai.lgs
 
@@ -198,6 +198,21 @@ app.post("/likes", async (req, res) => {
     }
 });
 
+app.delete("/likes", async (req, res) => {
+    try {
+        const { query } = req;
+        const id_user = Number(query.id_user) 
+        const id_log = Number(query.id_log)
+        const { id } = req.params;
+        const [results] = await pool.query(
+            "DELETE FROM likes WHERE id_user=? AND id_log=?",
+            [id,id_user, id_log]
+        );
+        res.status(200).send("Like deletado!", results);
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 app.listen(3000, () => {
