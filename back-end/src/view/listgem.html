@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/back-end/src/style/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+        integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
+        integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
+        integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Lista de Logs</title>
+</head>
+
+<body>
+    <h1 class="titulo d-flex justify-content-around">Listagem</h1>
+    <div class="container">
+        <div class="buttons d-flex justify-content-around">
+            <button class="btn btn-danger mb-3 mt-3"><</button>
+            <button class="btn btn-danger mb-3 mt-3"">></button>
+        </div>
+        <div id="categoria">
+        </div>
+        <div class="buttons d-flex justify-content-around">
+            <button class="btn btn-danger mb-3 mt-3"><</button>
+            <button class="btn btn-danger mb-3 mt-3"">></button>
+        </div>
+    </div>
+
+</body>
+<script>
+    const url = "http://localhost:3000/logs?pagina=1&quantidade=10";
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+    })
+        .then((res) => {
+            if (!res.ok)
+                console.log("teste ", res)
+            return res.json();
+        }).then((data) => {
+            if (data)
+                console.log("teste: ", data)
+
+            let categoriasHTML = "";
+            if (data && Array.isArray(data)) {
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    console.log(element.categoria);
+                    categoriasHTML += `
+                    <div class='card mb-3'>
+                    <div style="border-radius: 4px; border: 1px #cacaca solid; padding:20px">
+                Categoria: ${element.categoria} <br>
+                <div style="display> flex; justify-content: column"> 
+                    Horas trabalhadas: ${element.horas_trabalhadas} <br>
+                    Linhas de codigo: ${element.linhas_codigo} <br> 
+                    Bugs corrigidos: ${element.bugs_corrigidos}  <br>
+                    </div>
+                    </div>
+                    </div>`;
+                }
+
+            }
+            document.getElementById("categoria").innerHTML = categoriasHTML;
+        })
+        .catch((error) => console.log("ERROR: ", error))
+</script>
+
+</html>
