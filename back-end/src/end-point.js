@@ -154,6 +154,19 @@ SELECT
     res.send(results);
 });
 
+app.get("/metricas-usuario/:id", async (req, res) =>{
+    try {
+        const { id } = req.params;
+        const [results] = await pool.query(
+            "SELECT sum(horas_trabalhadas) AS qtde_horas_trabalhadas, sum(bugs_corrigidos) AS qtde_bugs_corrigidos, count(lgs.id) AS qtde_logs,usuario.nome FROM lgs JOIN usuario ON lgs.id_user = usuario.id WHERE id_user= 1;",
+            id
+        );
+        res.status(200).send(results);
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 // Cadastro de logs
 app.post("/logs", async (req, res) => {
     try {
