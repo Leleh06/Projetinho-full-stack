@@ -1,0 +1,92 @@
+/* ===== Estilo geral ===== */
+body {
+    background-color: #eeeeee;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+}
+
+/* ===== Colunas ===== */
+.card-user, .card-logs, .card-activities {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.card-user { flex: 1; max-width: 250px; }
+.card-logs { flex: 2; max-width: 600px; }
+.card-activities { flex: 1; max-width: 250px; }
+
+.card-user .container, .card-logs .container, .card-activities .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+#metricas div, #categoria div {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 10px;
+} 
+
+/* Ajuste para os detalhes dentro de categoria */
+ #categoria div div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+} 
+
+.novo-log-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+#btn-novo-log {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+#btn-novo-log:hover {
+    background-color: #0056b3;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.botao{
+    background-color: #0056b3;
+    height: 30px;
+    width: 40px;
+}
